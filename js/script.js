@@ -17,16 +17,16 @@ function generateFiveUniqueNumbers(min, max, count) {
     return numbers;
 }
 
+let randomNumArr = generateFiveUniqueNumbers(1, 50, 5);
+
 // CREAZONE E ASSEGNAZIONE CONTENUTO UL
 const numList = document.getElementById("numbers-list");
 
 function randomNumList() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < randomNumArr.length; i++) {
         const listItem = document.createElement("li");
-
+        listItem.textContent = randomNumArr[i];
         numList.appendChild(listItem);
-
-        listItem.textContent = generateFiveUniqueNumbers(1, 50, 1);
     }
 }
 
@@ -50,6 +50,38 @@ const intervalId = setInterval(function () {
         countdownDisplay.innerText = seconds--;
     }
 }, 1000);
+
+// CHECK INPUT E VALIDAZIONE CON I NUMERI GENERATI
+const userInput = document.querySelectorAll("input");
+const myForm = document.getElementById("answers-form");
+
+myForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let count = 0
+    let correctNum = [];
+
+    for (let i = 0; i < userInput.length; i++) {
+        const userNum = parseInt(userInput[i].value);
+        if (randomNumArr.includes(userNum)) {
+            count++;
+            correctNum.push(userNum);
+        }
+    }
+
+    const message = document.getElementById("message");
+
+    if (count === 0) {
+        message.textContent = "Non hai indovinato nessun numero";
+    } else if (count === userInput.length) {
+        message.textContent = "Ottimo! Hai indovinato tutti i numeri";
+    } else {
+        message.textContent = `Hai indovinato ${count} numero/i: ${correctNum.join(", ")}`;
+    }
+});
+
+
+
 
 
 
