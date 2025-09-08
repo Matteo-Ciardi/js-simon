@@ -33,9 +33,10 @@ function randomNumList() {
 randomNumList();
 
 // COUNTDOWN
-let seconds = 5;
+let seconds = 3;
 const countdownDisplay = document.getElementById("countdown");
 const answerInput = document.getElementById("answers-form");
+const altText = document.getElementById("instructions");
 
 countdownDisplay.innerText = seconds--;
 
@@ -44,10 +45,13 @@ const intervalId = setInterval(function () {
         countdownDisplay.classList.add("d-none");
         answerInput.classList.remove("d-none");
         numList.classList.add("d-none");
+        altText.innerText = "Inserisci i numeri memorizzati"
     } else {
         countdownDisplay.innerText = seconds--;
     }
 }, 1000);
+
+
 
 
 
