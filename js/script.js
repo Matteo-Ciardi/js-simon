@@ -17,9 +17,10 @@ function generateFiveUniqueNumbers(min, max, count) {
     return numbers;
 }
 
-function randomNumList() {
-    const numList = document.getElementById("numbers-list");
+// CREAZONE E ASSEGNAZIONE CONTENUTO UL
+const numList = document.getElementById("numbers-list");
 
+function randomNumList() {
     for (let i = 0; i < 5; i++) {
         const listItem = document.createElement("li");
 
@@ -30,6 +31,29 @@ function randomNumList() {
 }
 
 randomNumList();
+
+// COUNTDOWN
+let seconds = 5;
+const countdownDisplay = document.getElementById("countdown");
+const answerInput = document.getElementById("answers-form");
+
+countdownDisplay.innerText = seconds--;
+
+const intervalId = setInterval(function () {
+    if (seconds < 0) {
+        countdownDisplay.classList.add("d-none");
+        answerInput.classList.remove("d-none");
+        numList.classList.add("d-none");
+    } else {
+        countdownDisplay.innerText = seconds--;
+    }
+}, 1000);
+
+
+
+
+
+
 
 
 
