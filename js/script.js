@@ -1,4 +1,4 @@
-// GENERATORE DI 5 NUMERI CASUALI (10, 50)
+// GENERATORE DI 5 NUMERI CASUALI (1, 50)
 function randomNumGen(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -17,7 +17,20 @@ function generateFiveUniqueNumbers(min, max, count) {
     return numbers;
 }
 
-console.log(generateFiveUniqueNumbers(10, 50, 5));
+function randomNumList() {
+    const numList = document.getElementById("numbers-list");
+
+    for (let i = 0; i < 5; i++) {
+        const listItem = document.createElement("li");
+
+        numList.appendChild(listItem);
+
+        listItem.textContent = generateFiveUniqueNumbers(1, 50, 1);
+    }
+}
+
+randomNumList();
+
 
 
 
